@@ -1,5 +1,7 @@
 package edu.ufp.inf.lp2.projeto.route;
 
+import edu.princeton.cs.algs4.Out;
+import edu.ufp.inf.lp2.projeto.connection.Connection;
 import edu.ufp.inf.lp2.projeto.user.User;
 
 import java.util.ArrayList;
@@ -31,8 +33,9 @@ public class RouteService implements IRouteService{
                         user.getRoutes().remove(route);
                     }
                 }
-                routes.remove(route);
             }
+            loadDeletedRoutesToFile(route);
+            routes.remove(route);
         }
     }
 
@@ -77,6 +80,25 @@ public class RouteService implements IRouteService{
     public void printRoutesList(ArrayList<Route> routes) {
         for (Route route : routes) {
             System.out.println(route.toString());
+        }
+    }
+
+    /**
+     * load the deleted route to a file
+     *
+     * @param route - route to laod
+     */
+    public void loadDeletedRoutesToFile(Route route){
+        String path = "deletedRoutes.txt";
+        Out out = new Out(path);
+
+        out.println("Id: " + route.getId() + ",Departure: " + route.getDeparture()
+                + ",Arrival: " + route.getArrival() + ",Start Date: " + route.getStartDate()
+                + ",End Date: " + route.getEndDate());
+
+        out.print("Connections: ");
+        for(Connection connection : route.getConnections()){
+            out.println(connection.getId() + ",");
         }
     }
 }

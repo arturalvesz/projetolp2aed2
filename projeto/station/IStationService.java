@@ -16,5 +16,5 @@ public interface IStationService {
 
     void printStationsList(ArrayList<Station> stations);
 
-
+    void loadDeletedStationsToFile(Station station);
 }

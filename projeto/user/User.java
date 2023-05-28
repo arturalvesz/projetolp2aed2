@@ -14,14 +14,14 @@ public class User {
   private Integer id;
   private ArrayList<Local> prefLocals;
   private ArrayList<TransportType> prefTransports;
-  private ArrayList<Route> routes;
+  private ArrayList<Route> routesAL;
 
-  public User(String name, Integer id, ArrayList<Local> prefLocals, ArrayList<TransportType> prefTransports, ArrayList<Route> routes) {
+  public User(String name, Integer id, ArrayList<Local> prefLocals, ArrayList<TransportType> prefTransports, ArrayList<Route> routesAL) {
     this.name = name;
     this.id = id;
     this.prefLocals = prefLocals;
     this.prefTransports = prefTransports;
-    this.routes = routes;
+    this.routesAL = routesAL;
   }
 
   public String getName() {
@@ -57,11 +57,11 @@ public class User {
   }
 
   public ArrayList<Route> getRoutes() {
-    return routes;
+    return routesAL;
   }
 
-  public void setRoutes(ArrayList<Route> routes) {
-    this.routes = routes;
+  public void setRoutes(ArrayList<Route> routesAL) {
+    this.routesAL = routesAL;
   }
 
   @Override
@@ -71,7 +71,7 @@ public class User {
             ", id=" + id +
             ", prefLocals=" + prefLocals +
             ", prefTransports=" + prefTransports +
-            ", routes=" + routes +
+            ", routes=" + routesAL +
             '}';
   }
 }

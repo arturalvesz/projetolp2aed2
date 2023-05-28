@@ -16,4 +16,6 @@ public interface IRouteService {
 
     void printRoutesList(ArrayList<Route> routes);
 
+    void loadDeletedRoutesToFile(Route route);
+
 }

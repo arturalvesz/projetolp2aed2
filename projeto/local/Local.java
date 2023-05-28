@@ -4,13 +4,13 @@ import edu.ufp.inf.lp2.projeto.Coordinate;
 
 public class Local {
 
-  public Integer id;
+  private Integer id;
 
-  public String designation;
+  private String designation;
 
-  public Coordinate coordinates;
+  private Coordinate coordinates;
 
-  public boolean isStation;
+  private boolean isStation;
 
   public Local(Integer id, String designation, Coordinate coordinates, boolean isStation) {
     this.id = id;

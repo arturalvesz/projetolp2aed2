@@ -35,17 +35,18 @@ public class Main {
         Coordinate co = new Coordinate(41.18475,-8.60484);
         Coordinate co2 = new Coordinate(41.17299,-8.61093);
 
-        Local local1 = new Local(1,"Aeroporto Paris", co, true);
-        Local local2 = new Local(2,"Hotel Paris", co, false);
-        Local local3 = new Local(3,"Aeroporto Madrid", co, true);
-        Local local4 = new Local(4,"Hotel Madrid", co, false);
-        Local local5 = new Local(5,"Aeroporto Porto", co, true);
-        Local local6 = new Local(6,"Aeroporto Lisboa", co, true);
+        Local local1 = new Local(0,"Aeroporto Paris", co, true);
+        Local local2 = new Local(1,"Hotel Paris", co, false);
+        Local local3 = new Local(2,"Aeroporto Madrid", co, true);
+        Local local4 = new Local(3,"Hotel Madrid", co, false);
+        Local local5 = new Local(4,"Aeroporto Porto", co, true);
+        Local local6 = new Local(5,"Aeroporto Lisboa", co, true);
 
         Connection c2 = new Connection(1,local1, local2, 10.0,12.0,15.0,TransportType.TVDE);
-        Connection c4 = new Connection(2,local3, local4, 10.0,12.0,15.0,TransportType.TVDE);
-        Connection c5 = new Connection(3,local1, local4, 10.0,12.0,15.0,TransportType.TVDE);
-        Connection c7 = new Connection(4,local5, local6, 10.0,12.0,15.0,TransportType.TVDE);
+        Connection c4 = new Connection(2,local2, local3, 10.0,12.0,15.0,TransportType.TVDE);
+        Connection c5 = new Connection(3,local3, local4, 10.0,12.0,15.0,TransportType.TVDE);
+        Connection c7 = new Connection(4,local4, local5, 10.0,12.0,15.0,TransportType.TVDE);
+        Connection c8 = new Connection(5,local5, local6, 10.0,12.0,15.0,TransportType.TVDE);
 
 
         c1.add(c2);
@@ -77,9 +78,11 @@ public class Main {
         ArrayList<Route> r6 = new ArrayList<Route>();
 
 
-        Tests.addMultipleUsers();
-        Tests.addMultipleLocals();
-        Tests.addMultipleConnections();
+        System.out.println(dataBase.calculateDistance(co, co2));
+
+        //Tests.addMultipleUsers();
+        //Tests.addMultipleLocals();
+        //Tests.addMultipleConnections();
         //Tests.addMultipleStations();
         //Tests.removeLocal();
         //Tests.removeUser();
@@ -88,11 +91,13 @@ public class Main {
         //Tests.addUserRoutes();
         //Tests.UserRoutes();
         //Tests.createGraph();
+        //Tests.shortestPath();
+        //Tests.files();
         //Tests.hash();
         //Tests.PrintLists();
         //r2.add(r1);
         //r2.add(r5);
-        System.out.println("dist: " + dataBase.CalcDistance(co,co2));
+        //System.out.println("dist: " + dataBase.CalcDistance(co,co2));
         //r4.add(r3);
 
 

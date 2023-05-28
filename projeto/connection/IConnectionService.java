@@ -7,9 +7,10 @@ import java.util.Hashtable;
 
 public interface IConnectionService{
 
-    void addConnection(Integer Key, Connection connection, Hashtable<Integer, Connection> connectionsHT);
-    void deleteConnection(Connection connection, Hashtable<Integer, Connection> connectionsHT, ArrayList<Route> routes);
-    void editConnection(Integer KeyToReplace, Connection connectionToInsert, Hashtable<Integer, Connection> connectionsHT);
-    Connection searchConnection(Connection connection, Hashtable<Integer, Connection> connectionsHT);
-    void printHT(Hashtable<Integer, Connection> connectionsHT);
+    void addConnection(Connection connection, ArrayList<Connection> connections);
+    void deleteConnection(Connection connection, ArrayList<Connection> connections, ArrayList<Route> routes);
+    void editConnection(Connection connectionToInsert, ArrayList<Connection> connections);
+    Connection searchConnection(Connection connection, ArrayList<Connection> connections);
+    void printAL(ArrayList<Connection> connections);
+    void loadDeletedConnectionsToFile(Connection connection);
 }

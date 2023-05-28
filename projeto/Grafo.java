@@ -3,10 +3,9 @@ package edu.ufp.inf.lp2.projeto;
 import edu.ufp.inf.lp2.projeto.connection.Connection;
 import edu.ufp.inf.lp2.projeto.local.Local;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Grafo implements Serializable {
+public class Grafo{
 
     private final ArrayList<Connection> edges;
     private final ArrayList<Local> vertices;

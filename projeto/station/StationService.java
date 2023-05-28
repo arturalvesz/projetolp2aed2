@@ -1,5 +1,8 @@
 package edu.ufp.inf.lp2.projeto.station;
 
+import edu.princeton.cs.algs4.Out;
+import edu.ufp.inf.lp2.projeto.Time;
+import edu.ufp.inf.lp2.projeto.connection.Connection;
 import edu.ufp.inf.lp2.projeto.local.Local;
 import edu.ufp.inf.lp2.projeto.user.User;
 
@@ -26,6 +29,8 @@ public class StationService implements IStationService {
                 //Remove station from locals
                 locals.remove(station.getLocal());
                 //Remove station
+
+                loadDeletedStationsToFile(station);
                 stations.remove(station);
             }
         }
@@ -71,6 +76,23 @@ public class StationService implements IStationService {
     public void printStationsList(ArrayList<Station> stations) {
         for (Station station : stations) {
             System.out.println(station.toString());
+        }
+    }
+
+    /**
+     * load the deleted station to a file
+     *
+     * @param station - station to load
+     */
+    public void loadDeletedStationsToFile(Station station){
+        String path = "deletedStations.txt";
+        Out out = new Out(path);
+
+        out.println("Id: " + station.getId() + ",Designation " + station.getDesignation() + ",Type: " + station.getTransport());
+
+        out.print("Schedule: ");
+        for(Time time : station.getSchedule()){
+            out.print("," + time.getId());
         }
     }
 }

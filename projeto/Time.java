@@ -8,13 +8,13 @@ public class Time {
 
   private Integer id;
 
-  private Station departureStation;
+  private String departureStation;
 
-  private Station destinationStation;
+  private String destinationStation;
 
   private ArrayList<String> hour;
 
-  public Time(Integer id, Station departureStation, Station destinationStation, ArrayList<String> hour) {
+  public Time(Integer id, String departureStation, String destinationStation, ArrayList<String> hour) {
     this.id = id;
     this.departureStation = departureStation;
     this.destinationStation = destinationStation;
@@ -29,19 +29,19 @@ public class Time {
     this.id = id;
   }
 
-  public Station getDepartureStation() {
+  public String getDepartureStation() {
     return departureStation;
   }
 
-  public void setDepartureStation(Station departureStation) {
+  public void setDepartureStation(String departureStation) {
     this.departureStation = departureStation;
   }
 
-  public Station getDestinationStation() {
+  public String getDestinationStation() {
     return destinationStation;
   }
 
-  public void setDestinationStation(Station destinationStation) {
+  public void setDestinationStation(String destinationStation) {
     this.destinationStation = destinationStation;
   }
 

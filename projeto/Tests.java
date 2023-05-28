@@ -25,23 +25,25 @@ public abstract class Tests {
     Date d2 = new Date(2,1,2023);
     static Date d3 = new Date(1,2,2023);
     Date d4 = new Date(2,2,2023);
-    Date d5 = new Date(1,3,2023);
-    Date d6 = new Date(2,3,2023);
+    static Date d5 = new Date(18,5,2023);
+    static Date d6 = new Date(19,5,2023);
     Date d7 = new Date(3,3,2023);
     Date d8 = new Date(4,3,2023);
 
     static Coordinate co = new Coordinate(5.0,4.0);
-    static Local local1 = new Local(1,"Aeroporto Paris", co, true);
-    static Local local2 = new Local(2,"Hotel Paris", co, false);
-    static Local local3 = new Local(3,"Aeroporto Madrid", co, true);
-    static Local local4 = new Local(4,"Hotel Madrid", co, false);
-    static Local local5 = new Local(5,"Aeroporto Porto", co, true);
-    static Local local6 = new Local(6,"Aeroporto Lisboa", co, true);
+    static Local local0 = new Local(0,"Aeroporto Paris", co, true);
+    static Local local1 = new Local(1,"Hotel Paris", co, false);
+    static Local local2 = new Local(2,"Aeroporto Madrid", co, true);
+    static Local local3 = new Local(3,"Hotel Madrid", co, false);
+    static Local local4 = new Local(4,"Aeroporto Porto", co, true);
+    static Local local5 = new Local(5,"Aeroporto Lisboa", co, true);
 
-    static Connection c2 = new Connection(1,local1, local2, 10.0,12.0,15.0,TransportType.TVDE);
-    static Connection c4 = new Connection(2,local2, local3, 10.0,12.0,15.0,TransportType.TVDE);
-    static Connection c5 = new Connection(3,local3, local4, 10.0,12.0,15.0,TransportType.TVDE);
-    static Connection c7 = new Connection(4,local4, local5, 10.0,12.0,15.0,TransportType.TVDE);
+    static Connection c2 = new Connection(0,local0, local1, 10.0,12.0,15.0,TransportType.TVDE);
+    static Connection c4 = new Connection(1,local1, local2, 10.0,12.0,15.0,TransportType.TVDE);
+    static Connection c5 = new Connection(2,local2, local1, 10.0,12.0,15.0,TransportType.TVDE);
+    static Connection c7 = new Connection(3,local2, local3, 1.0,12.0,15.0,TransportType.TRAIN);
+    static Connection c8 = new Connection(4,local3, local4, 15.0,12.0,15.0,TransportType.TVDE);
+    static Connection c9 = new Connection(5,local4, local5, 2.0,12.0,15.0,TransportType.TVDE);
 
     static ArrayList<Time> time1 = new ArrayList<>();
 
@@ -49,10 +51,10 @@ public abstract class Tests {
     String h2 = "14:30";
     String h3 = "19:30";
 
-    static Station s1 = new Station(1,"Aeroporto Porto", local5,TransportType.PLANE,time1);
-    static Station s2 = new Station(2,"Aeroporto Lisboa", local6,TransportType.PLANE,time1);
-    static Station s3 = new Station(3,"Aeroporto Madrid", local3,TransportType.PLANE,time1);
-    Station s4 = new Station(4,"Aeroporto Paris", local1,TransportType.PLANE,time1);
+    static Station s1 = new Station(1,"Aeroporto Porto", local4,TransportType.PLANE,time1);
+    static Station s2 = new Station(2,"Aeroporto Lisboa", local5,TransportType.PLANE,time1);
+    static Station s3 = new Station(3,"Aeroporto Madrid", local2,TransportType.PLANE,time1);
+    Station s4 = new Station(4,"Aeroporto Paris", local0,TransportType.PLANE,time1);
 
     static ArrayList<Route> zeRoutes = new ArrayList<Route>();
     static ArrayList<Route> r4 = new ArrayList<Route>();
@@ -118,10 +120,12 @@ public abstract class Tests {
         //Criar 3 users
         //Adicionar os users à lista
         //User esta função na main sem instanciar objeto
-        dataBase.addConnection(1,c2);
-        dataBase.addConnection(2,c4);
-        dataBase.addConnection(3,c5);
-        dataBase.addConnection(4,c7);
+        dataBase.addConnection(c2);
+        dataBase.addConnection(c4);
+        dataBase.addConnection(c5);
+        dataBase.addConnection(c7);
+        dataBase.addConnection(c8);
+        dataBase.addConnection(c9);
     }
 
     //LOCALS
@@ -134,6 +138,7 @@ public abstract class Tests {
         dataBase.addLocal(local3);
         dataBase.addLocal(local4);
         dataBase.addLocal(local5);
+        dataBase.addLocal(local0);
     }
     public static void removeLocal(){
         dataBase.deleteLocalById(1);
@@ -148,17 +153,45 @@ public abstract class Tests {
     }
 
     public static void createGraph(){
-        dataBase.createGraph();
-        dataBase.addEdges();
-        //dataBase.printGraph();
+        dataBase.createGraph("distance");
     }
+
+    public static void shortestPath(){
+        dataBase.shorthestPath(local2.getId(),local5.getId());
+        //dataBase.routesList(1);
+        dataBase.checkConnectivity();
+    }
+    public static void bestKPaths(int k){
+        for(int i = 0; i < k; i++){
+            dataBase.shorthestPath(local2.getId(), local5.getId());
+        }
+    }
+
     public static void PrintLists(){
-        dataBase.ListUsersStationsConnections();
+        //dataBase.ListUsersStationsConnections();
     }
 
     public static void hash(){
         dataBase.fillHash();
-        dataBase.printHash();
+        //dataBase.printHash();
+    }
+
+    public static void files(){
+        /*dataBase.loadLocalsFromFile("C:/Users/artur/Desktop/Java_Fx/src/main/java/edu/ufp/inf/lp2/projeto/locals.txt");
+        dataBase.loadConnectionsFromFile("src/main/java/edu/ufp/inf/lp2/projeto/connections.txt");
+        dataBase.loadRoutesFromFile("src/main/java/edu/ufp/inf/lp2/projeto/routes.txt");
+        dataBase.loadUsersFromFile("src/main/java/edu/ufp/inf/lp2/projeto/users.txt");
+        dataBase.loadStationsFromFile("src/main/java/edu/ufp/inf/lp2/projeto/station.txt");
+        dataBase.loadTimeFromFile("src/main/java/edu/ufp/inf/lp2/projeto/time.txt");
+
+        dataBase.loadNotVisitedStationsBin("src/main/java/edu/ufp/inf/lp2/projeto/notVisitedStations.bin",d5,d6);
+
+        String[] stations = new String[2];
+        stations[0] = "Aeroporto Porto";
+        stations[1] = "Aeroporto Lisboa";
+        dataBase.loadUsersVisitedToFile("src/main/java/edu/ufp/inf/lp2/projeto/usersVisited.txt", d5,d6, stations);
+
+         */
     }
 }
 

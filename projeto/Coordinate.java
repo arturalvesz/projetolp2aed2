@@ -1,8 +1,7 @@
 package edu.ufp.inf.lp2.projeto;
 
-import java.io.Serializable;
 
-public class Coordinate implements Serializable {
+public class Coordinate{
 
   public Double x;
 

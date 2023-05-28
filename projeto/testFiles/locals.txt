@@ -1,0 +1,4 @@
+Locals
+1,Aeroporto Porto,true,41.23712649551875,-8.670802783493027
+2,Aeroporto Lisboa,true,38.77901045970164,-9.131897712450405
+3,Aeroporto Madrid,true,10,10

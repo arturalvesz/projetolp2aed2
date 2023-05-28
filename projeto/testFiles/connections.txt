@@ -1,0 +1,3 @@
+Connections
+1,Aeroporto Porto,Aeroporto Lisboa,275,70,60,PLANE
+2,Aeroporto Lisboa,Aeroporto Porto,275,25,120,TRAIN

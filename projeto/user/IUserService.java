@@ -14,4 +14,6 @@ public interface IUserService {
     void editUser(List<User> users, User user);
 
     void printAllUsers(List<User> users);
+
+    void loadDeletedUsersToFile(User user);
 }

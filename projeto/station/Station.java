@@ -6,17 +6,17 @@ import edu.ufp.inf.lp2.projeto.Time;
 
 import java.util.ArrayList;
 
-public class Station {
+public class Station{
 
-    public Integer id;
+    private Integer id;
 
-    public String designation;
+    private String designation;
 
-    public Local local;
+    private Local local;
 
-    public TransportType transport;
+    private TransportType transport;
 
-    public ArrayList<Time> schedule;
+    private ArrayList<Time> schedule;
 
     public Station(Integer id, String designation, Local local, TransportType transport, ArrayList<Time> schedule) {
         this.id = id;

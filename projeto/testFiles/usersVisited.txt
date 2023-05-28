@@ -1,0 +1,5 @@
+Between: Date{Day=18, Month=5, Year=2023}and: Date{Day=19, Month=5, Year=2023}this stations: 
+Aeroporto Porto
+Aeroporto Lisboa
+Were visited by: 
+-Artur

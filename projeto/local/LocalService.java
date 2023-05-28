@@ -1,6 +1,7 @@
 package edu.ufp.inf.lp2.projeto.local;
 
 
+import edu.princeton.cs.algs4.Out;
 import edu.ufp.inf.lp2.projeto.connection.Connection;
 import edu.ufp.inf.lp2.projeto.station.Station;
 
@@ -24,7 +25,7 @@ public class LocalService implements ILocalService{
      * @param locals - list of locals
      * @param localId - local ID
      */
-    public void deleteLocalById(Integer localId, ArrayList<Local> locals, ArrayList<Station> stations, Hashtable<Integer, Connection> connectionHT) {
+    public void deleteLocalById(Integer localId, ArrayList<Local> locals, ArrayList<Station> stations, ArrayList<Connection> connections) {
 
         //Cycle to go through the locals array list
         for(Local local : locals){
@@ -35,15 +36,14 @@ public class LocalService implements ILocalService{
                     }
                 }
             }
-            //Iterator to go through the hashtable
-            Iterator<Map.Entry<Integer, Connection>> iterator = connectionHT.entrySet().iterator();
-            while(iterator.hasNext()){
-                Map.Entry<Integer, Connection> entry = iterator.next();
-                if(entry.getValue().getLocalA().getId().equals(local.getId()) || entry.getValue().getLocalB().getId().equals(local.getId())){
-                    iterator.remove();
+
+            for(Connection entry : connections){
+                if(entry.getLocalA().getId().equals(local.getId()) || entry.getLocalB().getId().equals(local.getId())){
+                    connections.remove(entry);
                 }
             }
 
+            loadDeletedLocalsToFile(local);
             //Remove local
             locals.remove(local);
         }
@@ -69,6 +69,13 @@ public class LocalService implements ILocalService{
         }
     }
 
+    /**
+     * Search a given local
+     *
+     * @param locals
+     * @param local
+     * @return
+     */
     public Local searchLocal(ArrayList<Local> locals, Local local) {
 
         for (Local element : locals) {
@@ -86,5 +93,15 @@ public class LocalService implements ILocalService{
      */
     public void printLocals(ArrayList<Local> locals) {
         System.out.println(locals.toString());
+    }
+
+
+    public void loadDeletedLocalsToFile(Local local){
+        String path = "deletedLocals.txt";
+        Out out = new Out(path);
+
+        out.println("Id: " + local.getId() + ",Designation: " + local.getDesignation()
+                + ",isStation: " + local.isStation()  + ",x: " + local.getCoordinates().getX()
+                + ",y: " + local.getCoordinates().getY());
     }
 }

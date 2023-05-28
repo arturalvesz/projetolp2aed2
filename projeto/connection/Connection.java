@@ -6,18 +6,18 @@ import edu.ufp.inf.lp2.projeto.TransportType;
 
 public class Connection {
 
-    public Integer id;
-    public Local localA;
+    private Integer id;
+    private Local localA;
 
-    public Local localB;
+    private Local localB;
 
-    public Double distance;
+    private Double distance;
 
-    public Double price;
+    private Double price;
 
-    public Double duration;
+    private Double duration;
 
-    public TransportType transport;
+    private TransportType transport;
 
 
     public Connection(Integer id, Local localA, Local localB, Double distance, Double price, Double duration, TransportType transport) {
